@@ -9,3 +9,5 @@
 /packages
 /ViewModel/bin
 /ViewModel/obj
+/.vs
+/ChkRepo/ChkRepo.csproj.user

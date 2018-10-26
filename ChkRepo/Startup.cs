@@ -51,7 +51,20 @@ namespace ChkRepo
 
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(cfg =>
+            {
+                cfg.MapRoute(
+                    name: "defaultapi",
+                    template: "api/{controller}/{action}/{id?}",
+                    defaults: new { controller = "TestRepoService", action = "GetAll" }
+                );
+
+                cfg.MapRoute(
+                    name: "defaultapp",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new {controller = "TestRepoApp", action = "Index"}
+                );
+            });
         }
     }
 }
