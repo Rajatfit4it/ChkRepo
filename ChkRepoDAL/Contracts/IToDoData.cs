@@ -13,5 +13,11 @@ namespace ChkRepoDAL.Contracts
         TodoItem Add(TodoItem item);
         bool Update(long id, TodoItem item);
         bool Delete(long id);
+
+        Task<List<TodoItem>> GetAllAsync();
+        Task<TodoItem> GetByIdAsync(long id);
+        Task<TodoItem> AddAsync(TodoItem item);
+        Task<bool> UpdateAsync(long id, TodoItem item);
+        Task<bool> DeleteAsync(long id);
     }
 }

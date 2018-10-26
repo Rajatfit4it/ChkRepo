@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChkRepoDAL.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChkRepoDAL
 {
@@ -31,15 +32,32 @@ namespace ChkRepoDAL
             return _context.TodoItems.ToList();
         }
 
+        public async Task<List<TodoItem>> GetAllAsync()
+        {
+            return await _context.TodoItems.ToListAsync();
+        }
+
         public TodoItem GetById(long id)
         {
             return _context.TodoItems.Find(id);
+        }
+
+        public async Task<TodoItem> GetByIdAsync(long id)
+        {
+            return await _context.TodoItems.FindAsync(id);
         }
 
         public TodoItem Add(TodoItem item)
         {
             _context.TodoItems.Add(item);
             _context.SaveChanges();
+            return item;
+        }
+
+        public async Task<TodoItem> AddAsync(TodoItem item)
+        {
+            await _context.TodoItems.AddAsync(item);
+            await _context.SaveChangesAsync();
             return item;
         }
 
@@ -59,6 +77,22 @@ namespace ChkRepoDAL
             return true;
         }
 
+        public async  Task<bool> UpdateAsync(long id, TodoItem item)
+        {
+            var todo = await _context.TodoItems.FindAsync(id);
+            if (todo == null)
+            {
+                return false;
+            }
+
+            todo.IsComplete = item.IsComplete;
+            todo.Name = item.Name;
+
+            _context.TodoItems.Update(todo);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public bool Delete(long id)
         {
             var todo = _context.TodoItems.Find(id);
@@ -68,6 +102,18 @@ namespace ChkRepoDAL
             }
             _context.TodoItems.Remove(todo);
             _context.SaveChanges();
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var todo = await _context.TodoItems.FindAsync(id);
+            if (todo == null)
+            {
+                return false;
+            }
+            _context.TodoItems.Remove(todo);
+            await _context.SaveChangesAsync();
             return true;
         }
     }

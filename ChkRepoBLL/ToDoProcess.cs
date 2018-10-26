@@ -25,9 +25,19 @@ namespace ChkRepoBLL
             return _mapper.Map<List<TodoItemVM>>(_toDoData.GetAll());
         }
 
+        public async Task<List<TodoItemVM>> GetAllAsync()
+        {
+            return _mapper.Map<List<TodoItemVM>>(await _toDoData.GetAllAsync());
+        }
+
         public TodoItemVM GetById(long id)
         {
             return _mapper.Map<TodoItemVM>(_toDoData.GetById(id));
+        }
+
+        public async Task<TodoItemVM> GetByIdAsync(long id)
+        {
+            return _mapper.Map<TodoItemVM>(await _toDoData.GetByIdAsync(id));
         }
 
         public TodoItemVM Add(TodoItemVM item)
@@ -38,15 +48,34 @@ namespace ChkRepoBLL
 
         }
 
+        public async Task<TodoItemVM> AddAsync(TodoItemVM item)
+        {
+            TodoItem itemDal = _mapper.Map<TodoItem>(item);
+            var response = await _toDoData.AddAsync(itemDal);
+            return _mapper.Map<TodoItemVM>(response);
+
+        }
+
         public bool Update(long id, TodoItemVM item)
         {
             TodoItem itemDal = _mapper.Map<TodoItem>(item);
             return _toDoData.Update(id, itemDal);
         }
 
+        public async Task<bool> UpdateAsync(long id, TodoItemVM item)
+        {
+            TodoItem itemDal = _mapper.Map<TodoItem>(item);
+            return await _toDoData.UpdateAsync(id, itemDal);
+        }
+
         public bool Delete(long id)
         {
             return _toDoData.Delete(id);
+        }
+
+        public async Task<bool> DeleteAsync(long id)
+        {
+            return await _toDoData.DeleteAsync(id);
         }
     }
 }
