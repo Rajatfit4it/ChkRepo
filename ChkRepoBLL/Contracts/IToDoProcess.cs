@@ -7,7 +7,7 @@ using ViewModel;
 
 namespace ChkRepoBLL.Contracts
 {
-    public interface IToDoProcess
+    public interface IToDoProcess : IProcess
     {
         List<TodoItemVM> GetAll();
         TodoItemVM GetById(long id);

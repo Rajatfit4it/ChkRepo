@@ -14,9 +14,9 @@ namespace ChkRepo.Controllers
     public class TestRepoServiceController : Controller
     {
         private readonly IToDoProcess _toDoProcess;
-        public TestRepoServiceController(IToDoProcess toDoProcess)
+        public TestRepoServiceController(IProcessFactory processFactory)
         {
-            _toDoProcess = toDoProcess;
+            _toDoProcess = processFactory.GetProcess<IToDoProcess>();
         }
 
         [HttpGet]

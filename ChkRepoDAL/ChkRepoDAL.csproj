@@ -108,7 +108,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IData.cs" />
+    <Compile Include="Contracts\IDataFactory.cs" />
     <Compile Include="Contracts\IToDoData.cs" />
+    <Compile Include="DataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TodoContext.cs" />
     <Compile Include="ToDoData.cs" />

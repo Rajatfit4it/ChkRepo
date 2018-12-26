@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChkRepoDAL.Contracts
 {
-    public interface IToDoData
+    public interface IToDoData : IData
     {
         List<TodoItem> GetAll();
         TodoItem GetById(long id);

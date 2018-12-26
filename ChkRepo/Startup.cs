@@ -34,6 +34,8 @@ namespace ChkRepo
 
             services.AddScoped<IToDoProcess, ToDoProcess>();
             services.AddScoped<IToDoData, ToDoData>();
+            services.AddScoped<IProcessFactory, ProcessFactory>();
+            services.AddScoped<IDataFactory, DataFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

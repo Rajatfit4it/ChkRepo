@@ -53,8 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IProcess.cs" />
+    <Compile Include="Contracts\IProcessFactory.cs" />
     <Compile Include="Contracts\IToDoProcess.cs" />
     <Compile Include="DataTypeMapper.cs" />
+    <Compile Include="ProcessFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDoProcess.cs" />
   </ItemGroup>

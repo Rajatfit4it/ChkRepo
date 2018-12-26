@@ -15,9 +15,9 @@ namespace ChkRepoBLL
     {
         private readonly IToDoData _toDoData;
         private readonly IMapper _mapper;
-        public ToDoProcess(IToDoData toDoData, IMapper mapper)
+        public ToDoProcess(IDataFactory dataFactory, IMapper mapper)
         {
-            _toDoData = toDoData;
+            _toDoData = dataFactory.GetData<IToDoData>();
             _mapper = mapper;
         }
         public List<TodoItemVM> GetAll()
