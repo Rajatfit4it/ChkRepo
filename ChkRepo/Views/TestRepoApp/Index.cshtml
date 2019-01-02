@@ -1,7 +1,17 @@
 ﻿
+@model List<ViewModel.TodoItemVM>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Index TestRepoApp</h2>
+
+<table>
+    <tr><td>Todo Items</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Name</td></tr>
+    }
+
+</table>
 
